@@ -7,8 +7,9 @@ license = "MIT"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+anstyle = "1.0.1"
 anyhow = "1.0.72"
-clap = { version = "4.3.19", features = ["derive"] }
+clap = { version = "4.3.19", features = ["derive", "unstable-styles"] }
 clap_complete = "4.3.2"
 derive-where = "1.2.1"
 env_logger = "0.10.0"

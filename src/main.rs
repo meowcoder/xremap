@@ -31,7 +31,7 @@ mod event_handler;
 mod tests;
 
 #[derive(Parser, Debug)]
-#[clap(version)]
+#[command(version, styles = colored_styles())]
 struct Args {
     /// Include a device name or path
     #[clap(long, use_value_delimiter = true)]
@@ -317,4 +317,18 @@ fn handle_config_changes(
         })
     }));
     Ok(true)
+}
+
+fn colored_styles() -> clap::builder::Styles {
+    use anstyle::AnsiColor::{Green, Yellow};
+    use anstyle::{Color::Ansi, Style};
+
+    let yellow = Style::new().fg_color(Some(Ansi(Yellow)));
+    let green = Style::new().fg_color(Some(Ansi(Green)));
+
+    clap::builder::Styles::styled()
+        .usage(yellow)
+        .header(yellow)
+        .placeholder(green)
+        .literal(green)
 }
